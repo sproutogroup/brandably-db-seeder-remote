@@ -15,6 +15,17 @@ module.exports = {
   "product_variants",
  ],
 
+ SIZES: [
+  { id: 1, name: "XXS" },
+  { id: 2, name: "XS" },
+  { id: 3, name: "S" },
+  { id: 4, name: "M" },
+  { id: 5, name: "L" },
+  { id: 6, name: "XL" },
+  { id: 7, name: "XXL" },
+  { id: 8, name: "XXXL" },
+ ],
+
  QTY_PRICE_PAIRS: [
   [2, "Qty_2", "PriceOrig_2"],
   [3, "Qty_3", "PriceOrig_3"],

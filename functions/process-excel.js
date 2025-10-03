@@ -37,18 +37,14 @@ async function processExcel(excelPath) {
   categories,
   config.DATA_DIR
  );
- const sizes = await processSizes(data, config.DATA_DIR);
+ const sizes = await processSizes(config.SIZES, config.DATA_DIR);
 
  // Create lookups
  const brandLookup = Object.fromEntries(brands.map((b) => [b.name, b.id]));
  const colorLookup = Object.fromEntries(colors.map((c) => [c.name, c.id]));
+ const sizeLookup = Object.fromEntries(sizes.map((s) => [s.name, s.id]));
  const categoryLookup = Object.fromEntries(
   categories.map((c) => [c.name, c.id])
- );
-
- // Create size lookup: key is "value-unit", value is id
- const sizeLookup = Object.fromEntries(
-  sizes.map((s) => [`${s.value}-${s.unit}`, s.id])
  );
 
  // Process bulk discounts

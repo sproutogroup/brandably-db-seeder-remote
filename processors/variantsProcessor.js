@@ -1,5 +1,4 @@
-const { getSizeId } = require("../lib/sizes-processor-utils");
-const { writeCSV } = require("../lib/utils");
+const { extractSizeId, writeCSV } = require("../lib/utils");
 
 async function processVariants(
  data,
@@ -21,7 +20,7 @@ async function processVariants(
  data.forEach((row) => {
   const productId = modelToProductId.get(row.ModelCode);
   const colorId = colorLookup[row.Color];
-  const sizeId = getSizeId(row, sizeLookup);
+  const sizeId = extractSizeId(row.ItemCode, sizeLookup);
 
   const serValue = row.Ser;
   let bulkDiscountPlanId = null;
