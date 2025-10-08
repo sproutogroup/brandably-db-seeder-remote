@@ -20,12 +20,12 @@ async function processBulkDiscounts(data, qtyPricePairs, dataDir) {
   const serValue = row.Ser;
   const tiers = [];
 
-  qtyPricePairs.forEach(([qtyValue, qtyCol, priceCol]) => {
+  qtyPricePairs.forEach(([qtyCol, priceCol]) => {
    const qty = row[qtyCol];
    const price = row[priceCol];
 
    if (qty != null && price != null && qty > 0) {
-    tiers.push([qtyValue, parseFloat(price)]);
+    tiers.push([qty, parseFloat(price)]);
    }
   });
 

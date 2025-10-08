@@ -1,9 +1,17 @@
 const { writeCSV } = require("../lib/utils");
 
-async function processProducts(data, categoryLookup, brandLookup, dataDir) {
+async function processProducts(
+ data,
+ categoryLookup,
+ brandLookup,
+ supplierLookup,
+ dataDir
+) {
  console.log("\n🔄 Processing products...");
 
  const modelGroups = new Map();
+ const supplier = supplierLookup.find((s) => s.id === 1);
+
  data.forEach((row) => {
   if (!modelGroups.has(row.ModelCode)) {
    modelGroups.set(row.ModelCode, row);
@@ -17,12 +25,14 @@ async function processProducts(data, categoryLookup, brandLookup, dataDir) {
  modelGroups.forEach((firstRow, modelCode) => {
   products.push({
    id: productId,
+   model_code: modelCode,
    name: firstRow.ItemName,
    description: firstRow.LongDescription || null,
    base_price: firstRow.PriceOrig_1,
    is_active: true,
    category_id: categoryLookup[firstRow.MainCategory],
    brand_id: brandLookup[firstRow.Brand],
+   supplier: supplier.id,
   });
   modelToProductId.set(modelCode, productId);
   productId++;

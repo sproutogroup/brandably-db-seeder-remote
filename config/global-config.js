@@ -9,10 +9,12 @@ module.exports = {
   "product_brands",
   "product_colors",
   "product_sizes",
+  "product_suppliers",
   "products",
   "bulk_discount_plans",
   "bulk_discount_tiers",
   "product_variants",
+  "product_images",
  ],
 
  SIZES: [
@@ -24,13 +26,17 @@ module.exports = {
   { id: 6, name: "XL" },
   { id: 7, name: "XXL" },
   { id: 8, name: "XXXL" },
+  { id: 9, name: "4XL" },
+  { id: 10, name: "5XL" },
  ],
 
+ SUPPLIERS: [{ id: 1, name: "XD Connects", slug: "xd-connects" }],
+
  QTY_PRICE_PAIRS: [
-  [2, "Qty_2", "PriceOrig_2"],
-  [3, "Qty_3", "PriceOrig_3"],
-  [4, "Qty_4", "PriceOrig_4"],
-  [5, "Qty_5", "PriceOrig_5"],
-  [6, "Qty_6", "PriceOrig_6"],
+  ["Qty_2", "PriceOrig_2"],
+  ["Qty_3", "PriceOrig_3"],
+  ["Qty_4", "PriceOrig_4"],
+  ["Qty_5", "PriceOrig_5"],
+  ["Qty_6", "PriceOrig_6"],
  ],
 };

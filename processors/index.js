@@ -2,17 +2,19 @@ const fs = require("fs").promises;
 const XLSX = require("xlsx");
 const config = require("../config/global-config");
 const { buildImageMapping } = require("../lib/image-mapper");
-const { processBrands } = require("../processors/brandsProcessor");
-const { processColors } = require("../processors/colorsProcessor");
+const { processBrands } = require("./brandsProcessor");
+const { processColors } = require("./colorsProcessor");
 const {
  processCategories,
  processSubcategories,
-} = require("../processors/categoriesProcessor");
-const { processSizes } = require("../processors/sizesProcessor");
-const { processBulkDiscounts } = require("../processors/discountsProcessor");
-const { processProducts } = require("../processors/productsProcessor");
-const { processVariants } = require("../processors/variantsProcessor");
+} = require("./categoriesProcessor");
+const { processSizes } = require("./sizesProcessor");
+const { processBulkDiscounts } = require("./discountsProcessor");
+const { processProducts } = require("./productsProcessor");
+const { processVariants } = require("./variantsProcessor");
+const { processImages } = require("./imagesProcessor");
 const { printSummary } = require("../lib/print-summary");
+const { processSuppliers } = require("./suppliersProcessor");
 
 async function processExcel(excelPath) {
  console.log("\n📂 Reading Excel file...");
@@ -20,6 +22,7 @@ async function processExcel(excelPath) {
  const sheetName = workbook.SheetNames[0];
  const worksheet = workbook.Sheets[sheetName];
  const data = XLSX.utils.sheet_to_json(worksheet);
+
  console.log(`   ✓ Loaded ${data.length} rows from sheet '${sheetName}'`);
 
  // Build image mapping
@@ -38,6 +41,7 @@ async function processExcel(excelPath) {
   config.DATA_DIR
  );
  const sizes = await processSizes(config.SIZES, config.DATA_DIR);
+ const suppliers = await processSuppliers(config.SUPPLIERS, config.DATA_DIR);
 
  // Create lookups
  const brandLookup = Object.fromEntries(brands.map((b) => [b.name, b.id]));
@@ -56,11 +60,12 @@ async function processExcel(excelPath) {
   data,
   categoryLookup,
   brandLookup,
+  suppliers,
   config.DATA_DIR
  );
 
- // Process variants
- const { variants, variantsWithDiscounts, variantsWithImages } =
+ // Process variants (no longer handles images)
+ const { variants, variantsWithDiscounts, skuToVariantId } =
   await processVariants(
    data,
    modelToProductId,
@@ -68,9 +73,15 @@ async function processExcel(excelPath) {
    sizeLookup,
    serToPattern,
    patternToId,
-   imageMap,
    config.DATA_DIR
   );
+
+ // Process product images separately
+ const { totalImages, variantsWithImages } = await processImages(
+  imageMap,
+  skuToVariantId,
+  config.DATA_DIR
+ );
 
  // Print summary
  printSummary({
@@ -79,12 +90,14 @@ async function processExcel(excelPath) {
   categories,
   subcategories,
   sizes,
+  suppliers,
   plans,
   tiersData,
   products,
   variants,
   variantsWithDiscounts,
   variantsWithImages,
+  totalImages,
   tierPatterns,
   serToPattern,
  });
