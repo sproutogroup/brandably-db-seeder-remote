@@ -2,6 +2,13 @@ const fs = require("fs").promises;
 const XLSX = require("xlsx");
 const config = require("../config/global-config");
 const { buildImageMapping } = require("../lib/image-mapper");
+const { processUsers } = require("./usersProcessor");
+const { processRoles } = require("./rolesProcessor");
+const { processPermissions } = require("./permissionsProcessor");
+const { processUsersRolesJunction } = require("./usersRolesJunctionProcessor");
+const {
+ processRolesPermissionsJunction,
+} = require("./rolesPermissionsJunctionProcessor");
 const { processBrands } = require("./brandsProcessor");
 const { processColors } = require("./colorsProcessor");
 const {
@@ -32,6 +39,21 @@ async function processExcel(excelPath) {
  await fs.mkdir(config.DATA_DIR, { recursive: true });
 
  // Process all entities
+ const users = await processUsers(config.USERS, config.DATA_DIR);
+ const roles = await processRoles(config.ROLES, config.DATA_DIR);
+ const permissions = await processPermissions(
+  config.PERMISSIONS,
+  config.DATA_DIR
+ );
+ const userRoles = await processUsersRolesJunction(
+  config.USER_ROLES,
+  config.DATA_DIR
+ );
+ const rolePermissions = await processRolesPermissionsJunction(
+  config.ROLE_PERMISSIONS,
+  config.DATA_DIR
+ );
+
  const brands = await processBrands(data, config.DATA_DIR);
  const colors = await processColors(data, config.DATA_DIR);
  const categories = await processCategories(data, config.DATA_DIR);
@@ -64,7 +86,7 @@ async function processExcel(excelPath) {
   config.DATA_DIR
  );
 
- // Process variants (no longer handles images)
+ // Process variants
  const { variants, variantsWithDiscounts, skuToVariantId } =
   await processVariants(
    data,
@@ -76,7 +98,7 @@ async function processExcel(excelPath) {
    config.DATA_DIR
   );
 
- // Process product images separately
+ // Process product images
  const { totalImages, variantsWithImages } = await processImages(
   imageMap,
   skuToVariantId,
@@ -85,6 +107,11 @@ async function processExcel(excelPath) {
 
  // Print summary
  printSummary({
+  users,
+  roles,
+  permissions,
+  userRoles,
+  rolePermissions,
   brands,
   colors,
   categories,

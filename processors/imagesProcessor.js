@@ -16,7 +16,6 @@ async function processImages(imageMap, skuToVariantId, dataDir) {
 
  // Iterate through imageMap (ItemCode -> array of filenames)
  for (const [itemCode, filenames] of imageMap.entries()) {
-  console.log(lowercaseSkuToVariantId.get("p221.209"), itemCode);
   const variantId = lowercaseSkuToVariantId.get(itemCode.toLowerCase());
 
   if (!variantId) {

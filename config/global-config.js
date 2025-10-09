@@ -4,6 +4,12 @@ module.exports = {
  IMAGES_DIR: "./images",
 
  SEED_ORDER: [
+  "users",
+  "roles",
+  "permissions",
+  "users_roles_junction",
+  "roles_permissions_junction",
+
   "product_categories",
   "product_subcategories",
   "product_brands",
@@ -15,6 +21,204 @@ module.exports = {
   "bulk_discount_tiers",
   "product_variants",
   "product_images",
+ ],
+
+ USERS: [
+  {
+   id: 1,
+   email: "admin@brandably.com",
+   password_hash:
+    "$2b$10$ear7Mzd3VBpdF42U7hiufu6oZX5JKbFqxKD7MlcqsHkRjwobezxBW",
+   username: "admin",
+   first_name: "System",
+   last_name: "Administrator",
+   phone_number: "+923001234567",
+   status: "active",
+   is_email_verified: true,
+   preferred_locale: "en",
+   created_at: new Date().toISOString(),
+  },
+  {
+   id: 2,
+   email: "manager@brandably.com",
+   password_hash:
+    "$2b$10$QGr82s7PqHLY06vGy23rTufhat2KBYjCe8yfS.GlXGWeRii/mZFH2",
+   username: "manager",
+   first_name: "Store",
+   last_name: "Manager",
+   status: "active",
+   is_email_verified: true,
+   preferred_locale: "en",
+   created_at: new Date().toISOString(),
+  },
+  {
+   id: 3,
+   email: "user@brandably.com",
+   password_hash:
+    "$2b$10$YKgCTGoSUJe6CVU2Fr5Dfuc4IANNPzH1O0llN7Mn3wwMM/StTNLEe",
+   username: "user",
+   first_name: "Regular",
+   last_name: "User",
+   status: "active",
+   is_email_verified: false,
+   preferred_locale: "en",
+   created_at: new Date().toISOString(),
+  },
+ ],
+
+ ROLES: [
+  {
+   id: 1,
+   name: "Super Administrator",
+   slug: "super-admin",
+   description: "Full system access with all permissions",
+   type: "system",
+   is_active: true,
+   created_at: new Date().toISOString(),
+  },
+  {
+   id: 2,
+   name: "Store Manager",
+   slug: "store-manager",
+   description: "Can manage products, inventory, and orders",
+   type: "system",
+   is_active: true,
+   created_at: new Date().toISOString(),
+  },
+  {
+   id: 3,
+   name: "Customer",
+   slug: "customer",
+   description: "Regular customer with basic access",
+   type: "system",
+   is_active: true,
+   created_at: new Date().toISOString(),
+  },
+ ],
+
+ PERMISSIONS: [
+  {
+   id: 1,
+   name: "Create Users",
+   slug: "users.create",
+   resource: "users",
+   action: "create",
+   description: "Can create new users",
+  },
+  {
+   id: 2,
+   name: "View Users",
+   slug: "users.read",
+   resource: "users",
+   action: "read",
+   description: "Can view user details",
+  },
+  {
+   id: 3,
+   name: "Update Users",
+   slug: "users.update",
+   resource: "users",
+   action: "update",
+   description: "Can update user information",
+  },
+  {
+   id: 4,
+   name: "Delete Users",
+   slug: "users.delete",
+   resource: "users",
+   action: "delete",
+   description: "Can delete users",
+  },
+
+  {
+   id: 5,
+   name: "Create Products",
+   slug: "products.create",
+   resource: "products",
+   action: "create",
+   description: "Can create new products",
+  },
+  {
+   id: 6,
+   name: "View Products",
+   slug: "products.read",
+   resource: "products",
+   action: "read",
+   description: "Can view products",
+  },
+  {
+   id: 7,
+   name: "Update Products",
+   slug: "products.update",
+   resource: "products",
+   action: "update",
+   description: "Can update products",
+  },
+  {
+   id: 8,
+   name: "Delete Products",
+   slug: "products.delete",
+   resource: "products",
+   action: "delete",
+   description: "Can delete products",
+  },
+
+  {
+   id: 9,
+   name: "Create Orders",
+   slug: "orders.create",
+   resource: "orders",
+   action: "create",
+   description: "Can create orders",
+  },
+  {
+   id: 10,
+   name: "View Orders",
+   slug: "orders.read",
+   resource: "orders",
+   action: "read",
+   description: "Can view orders",
+  },
+  {
+   id: 11,
+   name: "Update Orders",
+   slug: "orders.update",
+   resource: "orders",
+   action: "update",
+   description: "Can update order status",
+  },
+  {
+   id: 12,
+   name: "Cancel Orders",
+   slug: "orders.cancel",
+   resource: "orders",
+   action: "cancel",
+   description: "Can cancel orders",
+  },
+ ],
+
+ USER_ROLES: [
+  { user_id: 1, role_id: 1 },
+  { user_id: 2, role_id: 2 },
+  { user_id: 3, role_id: 3 },
+ ],
+
+ ROLE_PERMISSIONS: [
+  ...Array.from({ length: 12 }, (_, i) => ({
+   role_id: 1,
+   permission_id: i + 1,
+  })),
+
+  { role_id: 2, permission_id: 5 },
+  { role_id: 2, permission_id: 6 },
+  { role_id: 2, permission_id: 7 },
+  { role_id: 2, permission_id: 10 },
+  { role_id: 2, permission_id: 11 },
+
+  { role_id: 3, permission_id: 6 },
+  { role_id: 3, permission_id: 9 },
+  { role_id: 3, permission_id: 10 },
+  { role_id: 3, permission_id: 12 },
  ],
 
  SIZES: [
