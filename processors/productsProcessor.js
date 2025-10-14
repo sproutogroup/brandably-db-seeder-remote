@@ -3,6 +3,7 @@ const { writeCSV } = require("../lib/utils");
 async function processProducts(
  data,
  categoryLookup,
+ subcategoryLookup,
  brandLookup,
  supplierLookup,
  dataDir
@@ -31,6 +32,7 @@ async function processProducts(
    base_price: firstRow.PriceOrig_1,
    is_active: true,
    category_id: categoryLookup[firstRow.MainCategory],
+   subcategory_id: subcategoryLookup[firstRow.SubCategory],
    brand_id: brandLookup[firstRow.Brand],
    supplier: supplier.id,
   });

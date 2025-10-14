@@ -72,6 +72,9 @@ async function processExcel(excelPath) {
  const categoryLookup = Object.fromEntries(
   categories.map((c) => [c.name, c.id])
  );
+ const subcategoryLookup = Object.fromEntries(
+  subcategories.map((c) => [c.name, c.id])
+ );
 
  // Process bulk discounts
  const { plans, tiersData, serToPattern, patternToId, tierPatterns } =
@@ -81,6 +84,7 @@ async function processExcel(excelPath) {
  const { products, modelToProductId } = await processProducts(
   data,
   categoryLookup,
+  subcategoryLookup,
   brandLookup,
   suppliers,
   config.DATA_DIR
