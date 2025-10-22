@@ -64,31 +64,31 @@ async function processImages(
 
    // Upload to Supabase
    console.log(`   📤 Uploading: ${filename}...`);
-   const uploadResult = await uploadToSupabase(
-    localFilePath,
-    filename,
-    itemCode
-   );
+   // const uploadResult = await uploadToSupabase(
+   //  localFilePath,
+   //  filename,
+   //  itemCode
+   // );
 
-   if (uploadResult.success) {
-    imageObj.file_url = uploadResult.publicUrl;
-    imageObj.supabase_path = uploadResult.storagePath;
-    imageObj.upload_status = uploadResult.skipped ? "skipped" : "uploaded";
-    imageObj.uploaded_at = uploadResult.uploadedAt;
+   // if (uploadResult.success) {
+   //  imageObj.file_url = uploadResult.publicUrl;
+   //  imageObj.supabase_path = uploadResult.storagePath;
+   //  imageObj.upload_status = uploadResult.skipped ? "skipped" : "uploaded";
+   //  imageObj.uploaded_at = uploadResult.uploadedAt;
 
-    if (uploadResult.skipped) {
-     skippedCount++;
-     console.log(`   ⏭️  Skipped (already exists): ${filename}`);
-    } else {
-     uploadedCount++;
-     console.log(`   ✅ Success: ${filename}`);
-    }
-   } else {
-    imageObj.upload_status = "failed";
-    imageObj.upload_error = uploadResult.error;
-    failedCount++;
-    console.log(`   ❌ Failed: ${filename} - ${uploadResult.error}`);
-   }
+   //  if (uploadResult.skipped) {
+   //   skippedCount++;
+   //   console.log(`   ⏭️  Skipped (already exists): ${filename}`);
+   //  } else {
+   //   uploadedCount++;
+   //   console.log(`   ✅ Success: ${filename}`);
+   //  }
+   // } else {
+   //  imageObj.upload_status = "failed";
+   //  imageObj.upload_error = uploadResult.error;
+   //  failedCount++;
+   //  console.log(`   ❌ Failed: ${filename} - ${uploadResult.error}`);
+   // }
 
    images.push(imageObj);
    imageId++;

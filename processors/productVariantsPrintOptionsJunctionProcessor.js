@@ -1,7 +1,6 @@
 const { writeCSV } = require("../lib/utils");
 
 async function processProductVariantsPrintOptionsJunction(
- printingData,
  positionsData,
  skuToVariantId,
  printCodeToOptionId,

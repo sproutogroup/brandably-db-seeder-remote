@@ -4,6 +4,8 @@ async function processPrintOptions(
  data,
  printTechniques,
  printCodeToPlanId,
+ countToId,
+ areaRangeToId,
  dataDir
 ) {
  console.log("\n🔄 Processing print options...");
@@ -19,31 +21,53 @@ async function processPrintOptions(
  data.forEach((row) => {
   if (!row.PrintCode || !row.PrintTechnique) return;
 
-  const key = row.PrintCode;
+  const baseName = row.PrintCode;
+  const techniqueId = techniqueNameToId.get(row.PrintTechnique);
+  const planId = printCodeToPlanId.get(row.PrintCode);
 
-  // Only add if not already processed
-  if (!uniquePrintOptions.has(key)) {
-   const techniqueId = techniqueNameToId.get(row.PrintTechnique);
-   const planId = printCodeToPlanId.get(row.PrintCode);
+  // Determine print area ID
+  let printAreaId = null;
+  if (
+   row.PrintArea &&
+   row.PrintAreaFromCM2 !== undefined &&
+   row.PrintAreaToCM2 !== undefined
+  ) {
+   const areaKey = `${row.PrintAreaFromCM2}-${row.PrintAreaToCM2}`;
+   printAreaId = areaRangeToId.get(areaKey);
+  }
 
-   // Determine print area unit and values
-   let printAreaFrom = null;
-   let printAreaTo = null;
-   let printAreaUnit = null;
+  // Get color count ID
+  const colorCount = row.NrOfColors;
+  const colorCountId = countToId.get(colorCount);
 
-   if (row.PrintArea && row.PrintAreaFromCM2 && row.PrintAreaToCM2) {
-    printAreaFrom = row.PrintAreaFromCM2;
-    printAreaTo = row.PrintAreaToCM2;
-    printAreaUnit = "cm2";
+  // Build unique key based on ALL differentiating factors
+  const uniqueKey = `${baseName}_${colorCount}_${printAreaId}`;
+
+  // Build display name based on what varies
+  let displayName = baseName;
+
+  // Add area to name if present
+  if (printAreaId && row.PrintAreaFromCM2 && row.PrintAreaToCM2) {
+   displayName = `${baseName} (${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
+  }
+
+  // Add color count to name if > 1
+  if (colorCount > 1) {
+   if (printAreaId) {
+    displayName = `${baseName} (${colorCount} colors, ${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
+   } else {
+    displayName = `${baseName} (${colorCount} colors)`;
    }
+  }
 
-   uniquePrintOptions.set(key, {
-    name: row.PrintCode,
+  // Only add if this exact combination doesn't exist
+  if (!uniquePrintOptions.has(uniqueKey)) {
+   uniquePrintOptions.set(uniqueKey, {
+    name: displayName,
+    baseName: baseName,
     moq: row.MOQPrintOrder,
-    colorCount: row.NrOfColors || 1,
-    printAreaFrom,
-    printAreaTo,
-    printAreaUnit,
+    colorCountId: colorCountId,
+    printAreaId: printAreaId,
     printTechniqueId: techniqueId,
     printBulkDiscountPlanId: planId,
    });
@@ -55,29 +79,25 @@ async function processPrintOptions(
    id: index + 1,
    name: item.name,
    minimum_order_quantity: item.moq,
-   no_of_colors: item.colorCount,
-   print_area_from: item.printAreaFrom,
-   print_area_to: item.printAreaTo,
-   print_area_unit: item.printAreaUnit,
-   print_technique_id: item.printTechniqueId, // Changed
+   color_count_id: item.colorCountId,
+   print_area_id: item.printAreaId,
+   print_technique_id: item.printTechniqueId,
    print_bulk_discount_plan_id: item.printBulkDiscountPlanId,
   })
  );
 
- // Create lookup: PrintCode -> PrintOptionId
+ // Create lookup: Original PrintCode -> PrintOptionId
  const printCodeToOptionId = new Map();
  uniquePrintOptions.forEach((value, key) => {
-  const option = printOptions.find((opt) => opt.name === key);
+  const option = printOptions.find((opt) => opt.name === value.name);
   if (option) {
-   printCodeToOptionId.set(key, option.id);
+   printCodeToOptionId.set(value.baseName, option.id);
   }
  });
 
  await writeCSV("print_options.csv", printOptions, dataDir);
-
  console.log(`   ✓ Created ${printOptions.length} print options`);
 
- // Return both printOptions array and the lookup map
  return { printOptions, printCodeToOptionId };
 }
 

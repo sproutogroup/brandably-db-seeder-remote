@@ -31,6 +31,8 @@ const {
  processProductVariantsPrintOptionsJunction,
 } = require("./productVariantsPrintOptionsJunctionProcessor");
 const { processPrintPositions } = require("./printPositionsProcessor");
+const { processColorCounts } = require("./colorCountsProcessor");
+const { processPrintAreas } = require("./printAreasProcessor");
 
 const getExcelDataJson = (paths) => {
  const sheets = {};
@@ -121,11 +123,23 @@ async function processExcel(excelPaths) {
   printCodeToPlanId,
  } = await processPrintBulkDiscounts(printing, config.DATA_DIR);
 
+ const { colorCounts, countToId } = await processColorCounts(
+  printing,
+  config.DATA_DIR
+ );
+
+ const { printAreas, areaRangeToId } = await processPrintAreas(
+  printing,
+  config.DATA_DIR
+ );
+
  // Process print options - now returns both array and lookup
  const { printOptions, printCodeToOptionId } = await processPrintOptions(
   printing,
   printTechniques,
   printCodeToPlanId,
+  countToId,
+  areaRangeToId,
   config.DATA_DIR
  );
 
@@ -173,7 +187,6 @@ async function processExcel(excelPaths) {
 
  const productVariantsPrintOptionsJunction =
   await processProductVariantsPrintOptionsJunction(
-   printing,
    positions,
    skuToVariantId,
    printCodeToOptionId,
@@ -215,7 +228,10 @@ async function processExcel(excelPaths) {
   printTechniquesTypes,
   printTechniques,
   printPlans,
+  printPositions,
   printOptions,
+  colorCounts,
+  printAreas,
  });
 }
 

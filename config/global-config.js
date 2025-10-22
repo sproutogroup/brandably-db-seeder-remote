@@ -1,7 +1,7 @@
 module.exports = {
  DB_URL: "postgres://postgres:3373@localhost:5432/brandably",
  DATA_DIR: "./output",
- IMAGES_DIR: "./test-images",
+ IMAGES_DIR: "./images",
 
  SEED_ORDER: [
   "users",
@@ -14,6 +14,9 @@ module.exports = {
   "print_techniques",
   "print_bulk_discount_plans",
   "print_bulk_discount_tiers",
+  "print_positions",
+  "color_counts",
+  "print_areas",
   "print_options",
 
   "product_categories",
@@ -27,7 +30,7 @@ module.exports = {
   "bulk_discount_tiers",
   "product_variants",
 
-  "product-variants-print-options-junction",
+  "product_variants_print_options_junction",
   "product_images",
  ],
 
