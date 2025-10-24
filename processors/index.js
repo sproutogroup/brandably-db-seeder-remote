@@ -201,7 +201,8 @@ async function processExcel(excelPaths) {
   imageMap,
   skuToVariantId,
   config.DATA_DIR,
-  config.IMAGES_DIR
+  config.IMAGES_DIR,
+  true
  );
 
  // Print summary
