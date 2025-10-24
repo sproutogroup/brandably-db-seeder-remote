@@ -6,7 +6,6 @@ const {
 } = require("../services/upload-to-supabase");
 const path = require("path");
 const fs = require("fs").promises; // 👈 Added for file deletion
-const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL", "4XL", "5XL"];
 
 async function processImages(
  imageMap,
