@@ -32,7 +32,12 @@ async function processPrintTechniques(data, techniqueTypes, dataDir) {
  await writeCSV("print_techniques.csv", techniques, dataDir);
  console.log(`   ✓ Created ${techniques.length} print techniques`);
 
- return techniques;
+ const techniqueNameToId = new Map();
+ techniques.forEach((technique) => {
+  techniqueNameToId.set(technique.name, technique.id);
+ });
+
+ return { printTechniques: techniques, techniqueNameToId };
 }
 
 module.exports = {

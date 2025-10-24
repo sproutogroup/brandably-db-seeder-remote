@@ -2,7 +2,7 @@ const { writeCSV } = require("../lib/utils");
 
 async function processPrintOptions(
  data,
- printTechniques,
+ techniqueNameToId,
  printCodeToPlanId,
  countToId,
  areaRangeToId,
@@ -10,23 +10,18 @@ async function processPrintOptions(
 ) {
  console.log("\n🔄 Processing print options...");
 
- // Create a map of print technique name to ID
- const techniqueNameToId = new Map();
- printTechniques.forEach((technique) => {
-  techniqueNameToId.set(technique.name, technique.id);
- });
-
  const uniquePrintOptions = new Map();
 
- data.forEach((row) => {
+ data.forEach((row, i) => {
   if (!row.PrintCode || !row.PrintTechnique) return;
 
   const baseName = row.PrintCode;
+  const colorCount = row.NrOfColors;
   const techniqueId = techniqueNameToId.get(row.PrintTechnique);
-  const planId = printCodeToPlanId.get(row.PrintCode);
+  let printAreaId = null;
+  let colorCountId = null;
 
   // Determine print area ID
-  let printAreaId = null;
   if (
    row.PrintArea &&
    row.PrintAreaFromCM2 !== undefined &&
@@ -37,34 +32,39 @@ async function processPrintOptions(
   }
 
   // Get color count ID
-  const colorCount = row.NrOfColors;
-  const colorCountId = countToId.get(colorCount);
-
-  // Build unique key based on ALL differentiating factors
-  const uniqueKey = `${baseName}_${colorCount}_${printAreaId}`;
+  if (colorCount) {
+   colorCountId = countToId.get(colorCount);
+  }
 
   // Build display name based on what varies
-  let displayName = baseName;
+  let uniquePrintCode = baseName;
 
   // Add area to name if present
-  if (printAreaId && row.PrintAreaFromCM2 && row.PrintAreaToCM2) {
-   displayName = `${baseName} (${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
+  if (printAreaId) {
+   uniquePrintCode = `${baseName} (${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
   }
 
   // Add color count to name if > 1
-  if (colorCount > 1) {
+  if (colorCount) {
    if (printAreaId) {
-    displayName = `${baseName} (${colorCount} colors, ${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
+    uniquePrintCode = `${baseName} (${colorCount} colors, ${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
    } else {
-    displayName = `${baseName} (${colorCount} colors)`;
+    uniquePrintCode = `${baseName} (${colorCount} color${
+     colorCount > 1 ? "s" : ""
+    })`;
    }
   }
+
+  const planId = printCodeToPlanId.get(uniquePrintCode);
+
+  // Build unique key based on ALL differentiating factors
+  const uniqueKey = `${uniquePrintCode}_${colorCount}_${printAreaId}`;
 
   // Only add if this exact combination doesn't exist
   if (!uniquePrintOptions.has(uniqueKey)) {
    uniquePrintOptions.set(uniqueKey, {
-    name: displayName,
-    baseName: baseName,
+    name: uniquePrintCode,
+    baseName,
     moq: row.MOQPrintOrder,
     colorCountId: colorCountId,
     printAreaId: printAreaId,
@@ -74,7 +74,7 @@ async function processPrintOptions(
   }
  });
 
- const printOptions = Array.from(uniquePrintOptions.values()).map(
+ const _printOptions = Array.from(uniquePrintOptions.values()).map(
   (item, index) => ({
    id: index + 1,
    name: item.name,
@@ -86,17 +86,30 @@ async function processPrintOptions(
   })
  );
 
+ const printOptions = Array.from(uniquePrintOptions.values()).map(
+  (item, index) => ({
+   id: index + 1,
+   name: item.name,
+   base_name: item.baseName,
+   minimum_order_quantity: item.moq,
+   color_count_id: item.colorCountId,
+   print_area_id: item.printAreaId,
+   print_technique_id: item.printTechniqueId,
+   print_bulk_discount_plan_id: item.printBulkDiscountPlanId,
+  })
+ );
+
  // Create lookup: Original PrintCode -> PrintOptionId
  const printCodeToOptionId = new Map();
  uniquePrintOptions.forEach((value, key) => {
-  const option = printOptions.find((opt) => opt.name === value.name);
+  const option = _printOptions.find((opt) => opt.name === value.name);
   if (option) {
-   printCodeToOptionId.set(value.baseName, option.id);
+   printCodeToOptionId.set(value.name, option.id);
   }
  });
 
- await writeCSV("print_options.csv", printOptions, dataDir);
- console.log(`   ✓ Created ${printOptions.length} print options`);
+ await writeCSV("print_options.csv", _printOptions, dataDir);
+ console.log(`   ✓ Created ${_printOptions.length} print options`);
 
  return { printOptions, printCodeToOptionId };
 }

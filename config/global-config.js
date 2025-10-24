@@ -1,5 +1,7 @@
 module.exports = {
- DB_URL: "postgres://postgres:3373@localhost:5432/brandably",
+ DB_URL:
+  "postgresql://postgres:ogMRRK0x00oChbOL@db.mhkvikuzfhnivsuxqgxi.supabase.co:5432/postgres",
+ SUPABASE_BUCKET: "product_images",
  DATA_DIR: "./output",
  IMAGES_DIR: "./images",
 

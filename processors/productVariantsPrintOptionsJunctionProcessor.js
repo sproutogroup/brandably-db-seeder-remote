@@ -3,6 +3,8 @@ const { writeCSV } = require("../lib/utils");
 async function processProductVariantsPrintOptionsJunction(
  positionsData,
  skuToVariantId,
+ techniqueNameToId,
+ printOptions,
  printCodeToOptionId,
  printPositionCodeToId,
  dataDir
@@ -10,7 +12,6 @@ async function processProductVariantsPrintOptionsJunction(
  console.log("\n🔄 Processing variant print options junction...");
 
  const variantPrintOptions = [];
- let optionId = 1;
  let skippedCount = 0;
  let processedCount = 0;
 
@@ -18,32 +19,48 @@ async function processProductVariantsPrintOptionsJunction(
  const missingPrintOptions = new Set();
  const missingPositions = new Set();
 
- positionsData.forEach((row) => {
+ // ✅ prevent duplicates like (variant, option, position)
+ const seenCombinations = new Set();
+
+ positionsData.forEach((row, i) => {
   const itemCode = String(row.ItemCode || "");
-  const printCode = String(row.PrintCode || "");
   const positionCode = String(row.PrintPositionCode || "");
 
+  const printOptionsPerTechnique = getPrintOptionsByTechnique(
+   row,
+   printOptions,
+   techniqueNameToId
+  );
+
+  const printOptionIds = printOptionsPerTechnique
+   .map((o) => printCodeToOptionId.get(o.name))
+   .filter(Boolean);
+
   const variantId = skuToVariantId.get(itemCode);
-  const printOptionId = printCodeToOptionId.get(printCode);
   const positionId = printPositionCodeToId.get(positionCode);
 
   if (!variantId) missingVariants.add(row.ItemCode);
-  if (!printOptionId) missingPrintOptions.add(row.PrintCode);
+  if (!printOptionIds.length) missingPrintOptions.add(row.PrintCode);
   if (!positionId) missingPositions.add(row.PrintPositionCode);
 
-  if (!variantId || !printOptionId || !positionId) {
+  if (!variantId || !printOptionIds.length || !positionId) {
    skippedCount++;
    return;
   }
 
-  variantPrintOptions.push({
-   id: optionId++,
-   product_variant_id: variantId,
-   print_option_id: printOptionId,
-   print_position_id: positionId,
-  });
+  printOptionIds.forEach((optionId) => {
+   const comboKey = `${variantId}-${optionId}-${positionId}`;
+   if (seenCombinations.has(comboKey)) return; // skip duplicates
+   seenCombinations.add(comboKey);
 
-  processedCount++;
+   variantPrintOptions.push({
+    product_variant_id: variantId,
+    print_option_id: optionId,
+    print_position_id: positionId,
+   });
+
+   processedCount++;
+  });
  });
 
  await writeCSV(
@@ -55,7 +72,7 @@ async function processProductVariantsPrintOptionsJunction(
  console.log(
   `   ✓ Created ${variantPrintOptions.length} variant print options`
  );
- console.log(`   ✓ Processed ${processedCount} mappings`);
+ console.log(`   ✓ Processed ${processedCount} unique mappings`);
 
  if (skippedCount > 0) {
   console.log(`   ⚠ Skipped ${skippedCount} rows:`);
@@ -74,3 +91,32 @@ async function processProductVariantsPrintOptionsJunction(
 }
 
 module.exports = { processProductVariantsPrintOptionsJunction };
+
+function getPrintOptionsByTechnique(row, printOptions, techniqueNameToId) {
+ const technique = row.PrintTechnique;
+ const techniqueId = techniqueNameToId.get(technique);
+
+ const baseName = row.PrintCode;
+
+ const printOptionsByTechnique = printOptions.filter(
+  (o) => o.print_technique_id === techniqueId
+ );
+
+ const singleOption = printOptionsByTechnique.find((o) => {
+  return o.name === baseName;
+ });
+
+ let lastOptions = [];
+
+ if (!singleOption) {
+  lastOptions = printOptionsByTechnique.filter((o) => {
+   return o.name.includes(baseName);
+  });
+ }
+
+ return lastOptions.length > 0
+  ? lastOptions
+  : singleOption
+  ? [singleOption]
+  : printOptionsByTechnique;
+}

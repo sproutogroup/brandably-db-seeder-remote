@@ -2,8 +2,9 @@ const fs = require("fs").promises;
 const path = require("path");
 const crypto = require("crypto");
 const { supabase } = require("../lib/supabase-client");
+const config = require("../config/global-config");
 
-const BUCKET_NAME = "product_images";
+const { BUCKET_NAME } = config;
 
 async function fileExistsInSupabase(storagePath) {
  try {

@@ -34,7 +34,7 @@ async function processPrintBulkDiscounts(data, dataDir) {
  const printCodeToPattern = new Map();
 
  data.forEach((row) => {
-  const printCode = row.PrintCode;
+  const uniquePrintCode = getUniquePrintCode(row);
   const tiers = [];
 
   sortedQuantities.forEach((qty) => {
@@ -61,7 +61,7 @@ async function processPrintBulkDiscounts(data, dataDir) {
    tierPatterns.set(patternHash, tiers);
   }
 
-  printCodeToPattern.set(printCode, patternHash);
+  printCodeToPattern.set(uniquePrintCode, patternHash);
  });
 
  console.log(`   ✓ Found ${tierPatterns.size} unique print discount patterns`);
@@ -123,6 +123,36 @@ async function processPrintBulkDiscounts(data, dataDir) {
   tierPatterns,
   printCodeToPlanId,
  };
+}
+
+function getUniquePrintCode(row) {
+ const printCode = row.PrintCode;
+ const colorCount = row.NrOfColors;
+ const hasPrintArea =
+  row.PrintArea &&
+  row.PrintAreaFromCM2 !== undefined &&
+  row.PrintAreaToCM2 !== undefined;
+
+ // Build display name based on what varies
+ let displayName = printCode;
+
+ // Add area to name if present
+ if (hasPrintArea) {
+  displayName = `${printCode} (${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
+ }
+
+ // Add color count to name if > 1
+ if (colorCount) {
+  if (hasPrintArea) {
+   displayName = `${printCode} (${colorCount} colors, ${row.PrintAreaFromCM2}cm2 - ${row.PrintAreaToCM2}cm2)`;
+  } else {
+   displayName = `${printCode} (${colorCount} color${
+    colorCount > 1 ? "s" : ""
+   })`;
+  }
+ }
+
+ return displayName;
 }
 
 module.exports = {
