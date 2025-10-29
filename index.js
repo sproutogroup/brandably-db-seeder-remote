@@ -14,7 +14,7 @@ async function main() {
    EXCEL_PATH_PRINTING,
    EXCEL_PATH_POSITIONS,
   ]);
-
+  //
   console.log("\n🌱 Starting database seeding...");
   // await seedDatabase();
 
