@@ -47,7 +47,8 @@ async function processPrintBulkDiscounts(data, dataDir) {
      quantity: qty,
      net: parseFloat(netPrice),
      vdp: parseFloat(vdpPrice),
-     value: parseFloat(grossPrice),
+     gross: parseFloat(grossPrice),
+     value: (parseFloat(netPrice) + parseFloat(vdpPrice)) * 2,
     });
    }
   });

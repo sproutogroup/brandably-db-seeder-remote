@@ -29,7 +29,7 @@ async function processProducts(
    model_code: modelCode,
    name: firstRow.ItemName,
    description: firstRow.LongDescription || null,
-   base_price: firstRow.PriceOrig_1,
+   base_price: firstRow.PriceOrig_1 * 2,
    is_active: true,
    category_id: categoryLookup[firstRow.MainCategory],
    subcategory_id: subcategoryLookup[firstRow.SubCategory],

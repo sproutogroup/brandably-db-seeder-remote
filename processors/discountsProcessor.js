@@ -74,7 +74,7 @@ async function processBulkDiscounts(data, qtyPricePairs, dataDir) {
     id: tierId,
     bulk_discount_plan_id: planId,
     quantity: qty,
-    value: price,
+    value: price * 2,
    });
    tierId++;
   });

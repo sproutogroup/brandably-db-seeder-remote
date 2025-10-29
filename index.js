@@ -16,7 +16,7 @@ async function main() {
   ]);
 
   console.log("\n🌱 Starting database seeding...");
-  await seedDatabase();
+  // await seedDatabase();
 
   console.log("\n✅ Pipeline completed successfully!");
  } catch (err) {

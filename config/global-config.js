@@ -27,13 +27,13 @@ module.exports = {
   "product_colors",
   "product_sizes",
   "product_suppliers",
-  "products",
-  "bulk_discount_plans",
-  "bulk_discount_tiers",
-  "product_variants",
+  // "products",
+  // "bulk_discount_plans",
+  // "bulk_discount_tiers",
+  // "product_variants",
 
-  "product_variants_print_options_junction",
-  "product_images",
+  // "product_variants_print_options_junction",
+  // "product_images",
  ],
 
  USERS: [
