@@ -1,0 +1,99 @@
+id,name,code
+1,item front,item front
+2,item front up,item front up
+3,item back,item back
+4,item,Item
+5,item front middle,item front middle
+6,item front down,item front down
+7,item back up,item back up
+8,item back middle,item back middle
+9,item back down,item back down
+10,item top,item top
+11,box,box
+12,knife,knife
+13,handle,handle
+14,towel,towel
+15,knife front,knife front
+16,metal part,metal part
+17,blanket,blanket
+18,item left,item left
+19,item right,item right
+20,lid,lid
+21,Pocket,pocket
+22,fork,fork
+23,spoon,spoon
+24,cutting board,cutting board
+25,wooden base,wooden base
+26,chest left,chest left
+27,chest right,chest right
+28,item side left,item side left
+29,item side right,item side right
+30,item front left,item front left
+31,item front right,item front right
+32,item right down,item right down
+33,item left down,item left down
+34,item top left,item top left
+35,item top right,item top right
+36,pouch,pouch
+37,inside item,inside item
+38,barrel,barrel
+39,pu pouch,pu pouch
+40,item back right,item back right
+41,item back left,item back left
+42,in front of clip,in front of clip
+43,next to clip,next to clip
+44,pen,pen
+45,stand,stand
+46,tray,tray
+47,ring,ring
+48,Card,card
+49,item top middle,item top middle
+50,item top up,item top up
+51,item side,item side
+52,pouch front,pouch front
+53,bottom part,bottom part
+54,item side up,item side up
+55,item side down,item side down
+56,Item bottom,item bottom
+57,pouch back,pouch back
+58,item left up,item left up
+59,item right up,item right up
+60,USB-A top,USB-A top
+61,USB-C top,USB-C top
+62,usb,usb
+63,metal plate,metal plate
+64,Item left middle,item left middle
+65,Item right middle,item right middle
+66,strap,strap
+67,strap right,strap right
+68,strap left,strap left
+69,clip,clip
+70,tool,tool
+71,spatula,spatula
+72,pair of tongs,pair of tongs
+73,flap,flap
+74,item top - front,Item top front
+75,item top - back,Item top back
+76,paper sleeve,Paper sleeve
+77,item side middle,item side middle
+78,Item sleeve,Item sleeve
+79,flask,flask
+80,item middle,item middle
+81,torch,torch
+82,front light,front light
+83,rear light,rear light
+84,in fr of clip,in fr of clip
+85,barrel pen,barrel pen
+86,item side right up,item side right up
+87,item inside,item inside
+88,sleeve,sleeve
+89,notebook,notebook
+90,cover,cover
+91,cushion,cushion
+92,label,label
+93,umbrella,umbrella
+94,corkscrew,corkscrew
+95,inside neckline,Inside neck
+96,sleeve left,sleeve left
+97,sleeve right,sleeve right
+98,racket,racket

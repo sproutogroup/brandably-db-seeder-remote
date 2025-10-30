@@ -1,0 +1,71 @@
+id,name,hex_code
+1,black,#3D4043
+2,navy,#444E5A
+3,white,#FFFFFF
+4,grey,#A2AAAD
+5,transparent,#FFFFFF
+6,green,#4F4F47
+7,orange,#C98659
+8,blue,#3E6991
+9,brown,#BD9A7A
+10,off white,#E8E4DA
+11,steel,#B3BBC4
+12,beige,#B39F8D
+13,greige,#AD9F93
+14,light blue,#698CB3
+15,yellow,#FCE016
+16,pink,#E22882
+17,anthracite,#565A5C
+18,red,#AF2626
+19,lime,#BAD80A
+20,silver grey,#777777
+21,silver,#D1CEC6
+22,khaki,#585C3B
+23,gold,#EFDBB2
+24,turquoise,#007272
+25,purple,#BAAFD3
+26,warm brown,#DDD1C1
+27,royal blue,#1A5091
+28,olive green,#215B33
+29,moss,#495928
+30,Sage blue,#546477
+31,desert,#C4B6A6
+32,lavender,#B09FCA
+33,luscious red,#D93744
+34,tranquil blue,#4D91C6
+35,verdigris,#00656B
+36,sundial orange,#CF8848
+37,bronze,#B5917C
+38,sky blue,#7C9ED9
+39,mint,#B5E2BF
+40,forest green,#334D41
+41,iceberg green,#A5B2AA
+42,light grey,#BFC7D6
+43,light brown,#E3C08B
+44,dark brown,#665546
+45,cherry red,#772D35
+46,vulcano heather grey,#7F7384
+47,recycled white,#FFFFFF
+48,natural raw,#F3ECE0
+49,light heather grey,#858585
+50,cream yellow,#F4E3B5
+51,crushed mint,#BCE3DF
+52,peach nectar,#DFBAA9
+53,cloud pink,#F6DBD8
+54,ivory white,#E7DCD9
+55,burgundy,#64242E
+56,heather grey,#BCBCBC
+57,ochre yellow,#E6A65D
+58,heather anthracite,#101820
+59,heather green,#5E7461
+60,heather navy,#041C2C
+61,heather brown,#C4BBA3
+62,heather blue,#5A77A8
+63,light heather green,#5E7461
+64,light heather anthracite,#66676D
+65,light heather brown,#DACBBE
+66,light heather blue,#677283
+67,light heather navy,#70789B
+68,storm grey,#92949B
+69,natural,#EDE6DB
+70,reflecting,#A2A2A1

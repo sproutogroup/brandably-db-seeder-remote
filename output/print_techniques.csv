@@ -1,0 +1,26 @@
+id,name,print_technique_type_id
+1,CO2 Engraving,1
+2,Custom Card,1
+3,Custom sleeve,2
+4,Digital Print,1
+5,Digital print 360°,1
+6,Digital transfer,1
+7,Doming,1
+8,Embroidery,1
+9,Embroidery 3D,1
+10,Hot stamping,1
+11,Laser engraving,1
+12,Laser Engraving 360°,1
+13,Engraved PU leather badge,1
+14,Pad print,1
+15,Printed patch with embroidery outline,1
+16,PU label Baltimore black,1
+17,PU label Baltimore green,1
+18,PU label Baltimore navy,1
+19,PU label Brendon,1
+20,PU label Sortino,1
+21,Screen transfer,1
+22,Silk screen print,1
+23,Silk screen round,1
+24,Silkscreen textile,1
+25,Ukiyo Card,1

@@ -9,11 +9,11 @@ async function main() {
  try {
   console.log("🚀 Starting Excel to Database Pipeline...\n");
 
-  await processExcel([
-   EXCEL_PATH_MAIN,
-   EXCEL_PATH_PRINTING,
-   EXCEL_PATH_POSITIONS,
-  ]);
+  // await processExcel([
+  //  EXCEL_PATH_MAIN,
+  //  EXCEL_PATH_PRINTING,
+  //  EXCEL_PATH_POSITIONS,
+  // ]);
 
   console.log("\n🌱 Starting database seeding...");
   await seedDatabase();

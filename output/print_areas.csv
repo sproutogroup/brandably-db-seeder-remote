@@ -1,0 +1,8 @@
+id,print_area_from,print_area_to,print_area_unit
+1,0,25,cm2
+2,0,50,cm2
+3,25,60,cm2
+4,50,75,cm2
+5,60,120,cm2
+6,120,180,cm2
+7,180,325,cm2

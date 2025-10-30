@@ -1,0 +1,4 @@
+id,email,password_hash,username,first_name,last_name,address,designation,phone_number,status,is_email_verified,preferred_locale,created_at
+1,admin@brandably.com,$2b$10$ear7Mzd3VBpdF42U7hiufu6oZX5JKbFqxKD7MlcqsHkRjwobezxBW,admin,System,Administrator,"Suite 400, 12 Castle St, Manchester, M3 4AB, UK",Platform Administrator,+923001234567,active,true,en,2025-10-29T15:05:20.060Z
+2,manager@brandably.com,$2b$10$QGr82s7PqHLY06vGy23rTufhat2KBYjCe8yfS.GlXGWeRii/mZFH2,manager,Store,Manager,"Office 7, 88 Commerce Ave, Lahore, Punjab, Pakistan",Store Manager,,active,true,en,2025-10-29T15:05:20.061Z
+3,user@brandably.com,$2b$10$YKgCTGoSUJe6CVU2Fr5Dfuc4IANNPzH1O0llN7Mn3wwMM/StTNLEe,user,Regular,User,"Flat 2B, 5 Riverside Close, Islamabad, ICT, Pakistan",Customer,,active,false,en,2025-10-29T15:05:20.061Z
