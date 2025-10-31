@@ -7,9 +7,22 @@ async function processVariants(
  sizeLookup,
  serToPattern,
  patternToId,
+ printOptions,
+ positions,
  dataDir
 ) {
  console.log("\n🔄 Processing product variants...");
+
+ // Create lookup maps for print options and positions
+ const printOptionLookup = new Map();
+ printOptions.forEach((option) => {
+  printOptionLookup.set(option.base_name, option.id);
+ });
+
+ const printPositionLookup = new Map();
+ positions.forEach((position) => {
+  printPositionLookup.set(position.code.toLowerCase(), position.id);
+ });
 
  const variants = [];
  const skuToVariantId = new Map(); // Track ItemCode -> variantId mapping
@@ -42,6 +55,32 @@ async function processVariants(
   // Handle price - default to 0 if not specified
   const price = row.PriceOrig_1 || 0;
 
+  // Get print option ID from DefaultPrintCode
+  const printOptionId = row.DefaultPrintCode
+   ? printOptionLookup.get(row.DefaultPrintCode) || null
+   : null;
+
+  // Get print position ID from DefaultPrintLoc
+  const printPositionId = row.DefaultPrintLoc
+   ? printPositionLookup.get(row.DefaultPrintLoc) || null
+   : null;
+
+  // Parse MaxPrintAreaDefault (e.g., "150 x 150 mm" -> width: 150, height: 150, unit: "mm")
+  let maxPrintWidth = null;
+  let maxPrintHeight = null;
+  let printUnit = null;
+  if (row.MaxPrintAreaDefault) {
+   // Match pattern: number x number unit (e.g., "150 x 150 mm")
+   const match = String(row.MaxPrintAreaDefault).match(
+    /(\d+)\s*x\s*(\d+)\s*([a-zA-Z]+)/i
+   );
+   if (match) {
+    maxPrintWidth = parseInt(match[1]);
+    maxPrintHeight = parseInt(match[2]);
+    printUnit = match[3].toLowerCase(); // e.g., "mm", "cm", "inches"
+   }
+  }
+
   // Map ItemCode to variantId for image processing
   if (row.ItemCode) {
    skuToVariantId.set(String(row.ItemCode), variantId);
@@ -55,6 +94,11 @@ async function processVariants(
    stock: stock,
    color_id: colorId,
    size_id: sizeId,
+   print_option: printOptionId,
+   print_position: printPositionId,
+   max_print_width: maxPrintWidth,
+   max_print_height: maxPrintHeight,
+   print_area_unit: printUnit,
    product_id: productId,
    bulk_discount_plan_id: bulkDiscountPlanId,
   });

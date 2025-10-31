@@ -168,6 +168,11 @@ async function processExcel(excelPaths) {
   config.DATA_DIR
  );
 
+ const { printPositions, printPositionCodeToId } = await processPrintPositions(
+  positions,
+  config.DATA_DIR
+ );
+
  // Process variants
  const { variants, variantsWithDiscounts, skuToVariantId } =
   await processVariants(
@@ -177,13 +182,10 @@ async function processExcel(excelPaths) {
    sizeLookup,
    serToPattern,
    patternToId,
+   printOptions,
+   printPositions,
    config.DATA_DIR
   );
-
- const { printPositions, printPositionCodeToId } = await processPrintPositions(
-  positions,
-  config.DATA_DIR
- );
 
  const productVariantsPrintOptionsJunction =
   await processProductVariantsPrintOptionsJunction(
