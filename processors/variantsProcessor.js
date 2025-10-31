@@ -50,6 +50,7 @@ async function processVariants(
   variants.push({
    id: variantId,
    sku: row.ItemCode,
+   revised_sku: row["Revised SKU"],
    price: price * 2,
    stock: stock,
    color_id: colorId,
