@@ -19,8 +19,8 @@ async function processPrintPositions(data, dataDir) {
 
  const positions = Array.from(uniquePositions.values()).map((item, index) => ({
   id: index + 1,
-  name: item.name,
-  code: item.code,
+  name: item.name.toLowerCase(),
+  code: item.code.toLowerCase(),
  }));
 
  await writeCSV("print_positions.csv", positions, dataDir);
@@ -29,7 +29,7 @@ async function processPrintPositions(data, dataDir) {
  // Create lookup map
  const printPositionCodeToId = new Map();
  positions.forEach((pos) => {
-  printPositionCodeToId.set(pos.code, pos.id);
+  printPositionCodeToId.set(pos.code.toLowerCase(), pos.id);
  });
 
  return { printPositions: positions, printPositionCodeToId };

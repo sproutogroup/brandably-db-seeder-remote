@@ -1,13 +1,13 @@
 id,name,slug,resource,action,description,created_at,updated_at
-1,Create Users,users.create,users,create,Can create new users,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-2,View Users,users.read,users,read,Can view user details,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-3,Update Users,users.update,users,update,Can update user information,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-4,Delete Users,users.delete,users,delete,Can delete users,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-5,Create Products,products.create,products,create,Can create new products,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-6,View Products,products.read,products,read,Can view products,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-7,Update Products,products.update,products,update,Can update products,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-8,Delete Products,products.delete,products,delete,Can delete products,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-9,Create Orders,orders.create,orders,create,Can create orders,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-10,View Orders,orders.read,orders,read,Can view orders,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-11,Update Orders,orders.update,orders,update,Can update order status,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
-12,Cancel Orders,orders.cancel,orders,cancel,Can cancel orders,2025-10-29T15:05:27.296Z,2025-10-29T15:05:27.296Z
+1,Create Users,users.create,users,create,Can create new users,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+2,View Users,users.read,users,read,Can view user details,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+3,Update Users,users.update,users,update,Can update user information,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+4,Delete Users,users.delete,users,delete,Can delete users,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+5,Create Products,products.create,products,create,Can create new products,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+6,View Products,products.read,products,read,Can view products,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+7,Update Products,products.update,products,update,Can update products,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+8,Delete Products,products.delete,products,delete,Can delete products,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+9,Create Orders,orders.create,orders,create,Can create orders,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+10,View Orders,orders.read,orders,read,Can view orders,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+11,Update Orders,orders.update,orders,update,Can update order status,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z
+12,Cancel Orders,orders.cancel,orders,cancel,Can cancel orders,2025-11-03T12:40:20.569Z,2025-11-03T12:40:20.569Z

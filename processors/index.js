@@ -189,6 +189,7 @@ async function processExcel(excelPaths) {
 
  const productVariantsPrintOptionsJunction =
   await processProductVariantsPrintOptionsJunction(
+   main,
    positions,
    skuToVariantId,
    techniqueNameToId,

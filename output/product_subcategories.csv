@@ -1,27 +1,27 @@
 id,name,slug,parent_id
 1,Backpacks,backpacks,1
 2,Laptop Bags,laptop-bags,1
-3,Cooler bags,cooler-bags,2
+3,Cooler Bags,cooler-bags,2
 4,Toiletry Bag,toiletry-bag,1
-5,Thermos flasks,thermos-flasks,3
-6,Water bottles,water-bottles,3
+5,Insulation Mugs,insulation-mugs,3
+6,Water Bottles,water-bottles,3
 7,Blankets,blankets,4
 8,Accessories,accessories,4
-9,Ceramic Mugs,ceramic-mugs,3
-10,First aid & Home safety,first-aid-and-home-safety,5
+9,Coffee Mugs,coffee-mugs,3
+10,First Aid & Home Safety,first-aid-and-home-safety,5
 11,Barbecue,barbecue,2
 12,Dishes,dishes,4
 13,Bathroom,bathroom,4
-14,Weekend Bags,weekend-bags,1
+14,Weekend bags,weekend-bags,1
 15,Toiletry Bags,toiletry-bags,1
 16,Accessories,accessories,1
-17,Insulation mugs,insulation-mugs,3
-18,Outdoor bags,outdoor-bags,1
+17,Thermos Flasks,thermos-flasks,3
+18,Outdoor Bags,outdoor-bags,1
 19,Accessories,accessories,2
 20,Beach,beach,2
 21,Games,games,4
 22,Measuring tapes,measuring-tapes,5
-23,Rulers & cutters,rulers-and-cutters,5
+23,Rulers & Cutters,rulers-and-cutters,5
 24,Keychains,keychains,5
 25,Tool pens,tool-pens,5
 26,Multitools,multitools,5
@@ -42,45 +42,46 @@ id,name,slug,parent_id
 41,Speakers,speakers,6
 42,Sport accessories,sport-accessories,7
 43,Headphones,headphones,6
-44,Ear Buds,ear-buds,6
-45,Wearables,wearables,6
-46,Pocket knives,pocket-knives,5
-47,Bike accessories,bike-accessories,5
-48,Coffee mugs,coffee-mugs,3
-49,Infuser bottles,infuser-bottles,3
-50,Scarves,scarves,8
-51,Hats,hats,8
-52,Caps,caps,8
-53,Beanies,beanies,8
-54,Outdoor games,outdoor-games,2
-55,Sunglasses,sunglasses,2
-56,Wellness & Personal care,wellness-and-personal-care,4
-57,Work light,work-light,5
-58,Table lamp,table-lamp,5
-59,Light,light,5
-60,Writting,writting,9
-61,Trolley Bags,trolley-bags,1
-62,Crossbody bags,crossbody-bags,1
-63,Portfolios,portfolios,9
-64,Notebooks,notebooks,9
-65,Cardholders & Wallets,cardholders-and-wallets,1
-66,Travel adapters,travel-adapters,6
-67,Umbrellas,umbrellas,2
-68,Umbrellas,umbrellas,1
+44,Accesorries,accesorries,6
+45,Ear Buds,ear-buds,6
+46,Wearables,wearables,6
+47,Pocket knives,pocket-knives,5
+48,Bike accessories,bike-accessories,5
+49,Ceramic mugs,ceramic-mugs,3
+50,Infuser bottles,infuser-bottles,3
+51,Scarves,scarves,8
+52,Hats,hats,8
+53,Caps,caps,8
+54,Beanies,beanies,8
+55,Outdoor games,outdoor-games,2
+56,Sunglasses,sunglasses,2
+57,Wellness &Personal care,wellness-andpersonal-care,4
+58,Work light,work-light,5
+59,Table Lamps,table-lamps,5
+60,Light,light,5
+61,Writting,writting,9
+62,Trolley bags,trolley-bags,1
+63,Crossbody Bags,crossbody-bags,1
+64,Portfolios,portfolios,9
+65,Notebooks,notebooks,9
+66,Cardholders & Wallets,cardholders-and-wallets,1
+67,Travel adapters,travel-adapters,6
+68,Umbrellas,umbrellas,2
 69,Wine & Bar,wine-and-bar,4
-70,Men jackets,men-jackets,8
+70,Mens Jackets,mens-jackets,8
 71,Bodywarmers,bodywarmers,8
 72,T-Shirts,t-shirts,8
 73,Polo,polo,8
-74,Women jackets,women-jackets,8
+74,Womens Jackets,womens-jackets,8
 75,Sweatshirts,sweatshirts,8
 76,Fleeces,fleeces,8
 77,Unisex Pants,unisex-pants,8
 78,Writing,writing,9
-79,Pen sets,pen-sets,9
+79,Pen Sets,pen-sets,9
 80,Wine accessories,wine-accessories,4
 81,Carafes,carafes,4
 82,Fleeces,fleeces,2
 83,Dishes,dishes,3
 84,Glass,glass,3
 85,Coffee  Mug,coffee-mug,4
+86,Slippers,slippers,4

@@ -2,7 +2,7 @@ id,name,code
 1,item front,item front
 2,item front up,item front up
 3,item back,item back
-4,item,Item
+4,item,item
 5,item front middle,item front middle
 6,item front down,item front down
 7,item back up,item back up
@@ -19,7 +19,7 @@ id,name,code
 18,item left,item left
 19,item right,item right
 20,lid,lid
-21,Pocket,pocket
+21,pocket,pocket
 22,fork,fork
 23,spoon,spoon
 24,cutting board,cutting board
@@ -46,7 +46,7 @@ id,name,code
 45,stand,stand
 46,tray,tray
 47,ring,ring
-48,Card,card
+48,card,card
 49,item top middle,item top middle
 50,item top up,item top up
 51,item side,item side
@@ -54,16 +54,16 @@ id,name,code
 53,bottom part,bottom part
 54,item side up,item side up
 55,item side down,item side down
-56,Item bottom,item bottom
+56,item bottom,item bottom
 57,pouch back,pouch back
 58,item left up,item left up
 59,item right up,item right up
-60,USB-A top,USB-A top
-61,USB-C top,USB-C top
+60,usb-a top,usb-a top
+61,usb-c top,usb-c top
 62,usb,usb
 63,metal plate,metal plate
-64,Item left middle,item left middle
-65,Item right middle,item right middle
+64,item left middle,item left middle
+65,item right middle,item right middle
 66,strap,strap
 67,strap right,strap right
 68,strap left,strap left
@@ -72,11 +72,11 @@ id,name,code
 71,spatula,spatula
 72,pair of tongs,pair of tongs
 73,flap,flap
-74,item top - front,Item top front
-75,item top - back,Item top back
-76,paper sleeve,Paper sleeve
+74,item top - front,item top front
+75,item top - back,item top back
+76,paper sleeve,paper sleeve
 77,item side middle,item side middle
-78,Item sleeve,Item sleeve
+78,item sleeve,item sleeve
 79,flask,flask
 80,item middle,item middle
 81,torch,torch
@@ -93,7 +93,7 @@ id,name,code
 92,label,label
 93,umbrella,umbrella
 94,corkscrew,corkscrew
-95,inside neckline,Inside neck
+95,inside neckline,inside neck
 96,sleeve left,sleeve left
 97,sleeve right,sleeve right
 98,racket,racket
