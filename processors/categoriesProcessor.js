@@ -1,5 +1,17 @@
 const { slugify, writeCSV } = require("../lib/utils");
 
+const sortedArray = [
+ "Office",
+ "Apparel",
+ "Bags",
+ "Drinkware",
+ "Tech",
+ "Outdoor",
+ "Wellness",
+ "Home",
+ "Other",
+];
+
 async function processCategories(data, dataDir) {
  console.log("\n🔄 Processing categories...");
 
@@ -7,7 +19,19 @@ async function processCategories(data, dataDir) {
   ...new Set(data.map((row) => row.MainCategory).filter(Boolean)),
  ];
 
- const categories = uniqueCategories.map((name, idx) => ({
+ const sortedCategories = uniqueCategories.sort((a, b) => {
+  const indexA = sortedArray.indexOf(a);
+  const indexB = sortedArray.indexOf(b);
+
+  if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+
+  if (indexA !== -1) return -1;
+  if (indexB !== -1) return 1;
+
+  return a.localeCompare(b);
+ });
+
+ const categories = sortedCategories.map((name, idx) => ({
   id: idx + 1,
   name,
   slug: slugify(name),
