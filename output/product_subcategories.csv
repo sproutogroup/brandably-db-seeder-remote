@@ -59,7 +59,7 @@ id,name,slug,parent_id
 58,Work light,work-light,9
 59,Table Lamps,table-lamps,9
 60,Light,light,9
-61,Writting,writting,1
+61,Writing,writing,1
 62,Trolley bags,trolley-bags,3
 63,Crossbody Bags,crossbody-bags,3
 64,Portfolios,portfolios,1
@@ -76,12 +76,11 @@ id,name,slug,parent_id
 75,Sweatshirts,sweatshirts,2
 76,Fleeces,fleeces,2
 77,Unisex Pants,unisex-pants,2
-78,Writing,writing,1
-79,Pen Sets,pen-sets,1
-80,Wine accessories,wine-accessories,8
-81,Carafes,carafes,8
-82,Fleeces,fleeces,6
-83,Dishes,dishes,4
-84,Glass,glass,4
-85,Coffee  Mug,coffee-mug,8
-86,Slippers,slippers,8
+78,Pen Sets,pen-sets,1
+79,Wine accessories,wine-accessories,8
+80,Carafes,carafes,8
+81,Fleeces,fleeces,6
+82,Dishes,dishes,4
+83,Glass,glass,4
+84,Coffee  Mug,coffee-mug,8
+85,Slippers,slippers,8
