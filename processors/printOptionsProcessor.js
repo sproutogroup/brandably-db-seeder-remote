@@ -66,7 +66,7 @@ async function processPrintOptions(
     name: uniquePrintCode,
     baseName,
     moq: row.MOQPrintOrder,
-    setupNet: row.SetupNet,
+    setupNet: row.SetupNet * 1.5,
     colorCountId: colorCountId,
     printAreaId: printAreaId,
     printTechniqueId: techniqueId,
