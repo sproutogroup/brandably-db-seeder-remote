@@ -181,6 +181,7 @@ async function processCategories(data, dataDir) {
    name,
    slug: slugify(name),
    cover: match?.cover || "",
+   sort: idx + 1,
   };
  });
 
@@ -221,26 +222,50 @@ async function processSubcategories(data, categories, dataDir) {
  const subcategories = [];
  let idCounter = 1;
 
+ // Helper function to find fuzzy match in order list
+ const findOrderIndex = (subName, orderList) => {
+  const subLower = subName.toLowerCase();
+
+  // First try exact match (case-insensitive)
+  let idx = orderList.findIndex((x) => x.toLowerCase() === subLower);
+  if (idx !== -1) return idx;
+
+  // Try singular/plural variations
+  const singularSub = subLower.endsWith("s") ? subLower.slice(0, -1) : subLower;
+  const pluralSub = subLower.endsWith("s") ? subLower : subLower + "s";
+
+  idx = orderList.findIndex((x) => {
+   const xLower = x.toLowerCase();
+   return xLower === singularSub || xLower === pluralSub;
+  });
+
+  return idx;
+ };
+
  // Sort within each category
  for (const [main, subs] of Object.entries(grouped)) {
   const orderList = subcategoryOrder[main.toUpperCase()] || [];
 
   const sortedSubs = subs.sort((a, b) => {
-   const idxA = orderList.findIndex((x) => x.toLowerCase() === a.toLowerCase());
-   const idxB = orderList.findIndex((x) => x.toLowerCase() === b.toLowerCase());
+   const idxA = findOrderIndex(a, orderList);
+   const idxB = findOrderIndex(b, orderList);
 
    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
    if (idxA !== -1) return -1;
    if (idxB !== -1) return 1;
-   return a.localeCompare(b);
+   return a.localeCompare(b, undefined, { sensitivity: "base" });
   });
 
   for (const sub of sortedSubs) {
+   const orderIndex = findOrderIndex(sub, orderList);
+   const sortValue = orderIndex !== -1 ? orderIndex + 1 : 999;
+
    subcategories.push({
     id: idCounter++,
     name: sub,
     slug: slugify(sub),
     parent_id: categoryLookup[main],
+    sort: sortValue,
    });
   }
  }
