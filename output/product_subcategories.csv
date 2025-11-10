@@ -1,86 +1,86 @@
-id,name,slug,parent_id
-1,Backpacks,backpacks,3
-2,Laptop Bags,laptop-bags,3
-3,Cooler Bags,cooler-bags,6
-4,Toiletry Bag,toiletry-bag,3
-5,Insulation Mugs,insulation-mugs,4
-6,Water Bottles,water-bottles,4
-7,Blankets,blankets,8
-8,Accessories,accessories,8
-9,Coffee Mugs,coffee-mugs,4
-10,First Aid & Home Safety,first-aid-and-home-safety,9
-11,Barbecue,barbecue,6
-12,Dishes,dishes,8
-13,Bathroom,bathroom,8
-14,Weekend bags,weekend-bags,3
-15,Toiletry Bags,toiletry-bags,3
-16,Accessories,accessories,3
-17,Thermos Flasks,thermos-flasks,4
-18,Outdoor Bags,outdoor-bags,3
-19,Accessories,accessories,6
-20,Beach,beach,6
-21,Games,games,8
-22,Measuring tapes,measuring-tapes,9
-23,Rulers & Cutters,rulers-and-cutters,9
-24,Keychains,keychains,9
-25,Tool pens,tool-pens,9
-26,Multitools,multitools,9
-27,Tool sets,tool-sets,9
-28,Tool gifts,tool-gifts,9
-29,Car accessories,car-accessories,9
-30,Torches,torches,9
-31,Safety vests,safety-vests,9
-32,Candles,candles,8
-33,Glass Cups,glass-cups,4
-34,Lunchboxes,lunchboxes,8
-35,Picnic,picnic,6
-36,Accessories,accessories,5
-37,Chargers,chargers,5
-38,Powerbanks,powerbanks,5
-39,Cables,cables,5
-40,Earbuds,earbuds,5
-41,Speakers,speakers,5
-42,Sport accessories,sport-accessories,7
-43,Headphones,headphones,5
-44,Accesorries,accesorries,5
-45,Ear Buds,ear-buds,5
-46,Wearables,wearables,5
-47,Pocket knives,pocket-knives,9
-48,Bike accessories,bike-accessories,9
-49,Ceramic mugs,ceramic-mugs,4
-50,Infuser bottles,infuser-bottles,4
-51,Scarves,scarves,2
-52,Hats,hats,2
-53,Caps,caps,2
-54,Beanies,beanies,2
-55,Outdoor games,outdoor-games,6
-56,Sunglasses,sunglasses,6
-57,Wellness &Personal care,wellness-andpersonal-care,8
-58,Work light,work-light,9
-59,Table Lamps,table-lamps,9
-60,Light,light,9
-61,Writing,writing,1
-62,Trolley bags,trolley-bags,3
-63,Crossbody Bags,crossbody-bags,3
-64,Portfolios,portfolios,1
-65,Notebooks,notebooks,1
-66,Cardholders & Wallets,cardholders-and-wallets,3
-67,Travel adapters,travel-adapters,5
-68,Umbrellas,umbrellas,6
-69,Wine & Bar,wine-and-bar,8
-70,Mens Jackets,mens-jackets,2
-71,Bodywarmers,bodywarmers,2
-72,T-Shirts,t-shirts,2
-73,Polo,polo,2
-74,Womens Jackets,womens-jackets,2
-75,Sweatshirts,sweatshirts,2
-76,Fleeces,fleeces,2
-77,Unisex Pants,unisex-pants,2
-78,Pen Sets,pen-sets,1
-79,Wine accessories,wine-accessories,8
-80,Carafes,carafes,8
-81,Fleeces,fleeces,6
-82,Dishes,dishes,4
-83,Glass,glass,4
-84,Coffee  Mug,coffee-mug,8
-85,Slippers,slippers,8
+id,name,slug,parent_id,sort
+1,Backpacks,backpacks,3,1
+2,Laptop Bags,laptop-bags,3,2
+3,Weekend bags,weekend-bags,3,3
+4,Crossbody Bags,crossbody-bags,3,4
+5,Outdoor Bags,outdoor-bags,3,5
+6,Trolley bags,trolley-bags,3,6
+7,Toiletry Bag,toiletry-bag,3,7
+8,Toiletry Bags,toiletry-bags,3,7
+9,Cardholders & Wallets,cardholders-and-wallets,3,10
+10,Accessories,accessories,3,11
+11,Umbrellas,umbrellas,6,1
+12,Picnic,picnic,6,8
+13,Beach,beach,6,9
+14,Sunglasses,sunglasses,6,10
+15,Cooler Bags,cooler-bags,6,11
+16,Barbecue,barbecue,6,12
+17,Accessories,accessories,6,13
+18,Fleeces,fleeces,6,999
+19,Outdoor games,outdoor-games,6,999
+20,Infuser bottles,infuser-bottles,4,1
+21,Thermos Flasks,thermos-flasks,4,2
+22,Water Bottles,water-bottles,4,3
+23,Insulation Mugs,insulation-mugs,4,4
+24,Ceramic mugs,ceramic-mugs,4,5
+25,Glass Cups,glass-cups,4,6
+26,Coffee Mugs,coffee-mugs,4,999
+27,Dishes,dishes,4,999
+28,Glass,glass,4,999
+29,Dishes,dishes,8,6
+30,Candles,candles,8,10
+31,Bathroom,bathroom,8,12
+32,Games,games,8,13
+33,Blankets,blankets,8,15
+34,Slippers,slippers,8,16
+35,Accessories,accessories,8,17
+36,Carafes,carafes,8,999
+37,Coffee  Mug,coffee-mug,8,999
+38,Lunchboxes,lunchboxes,8,999
+39,Wellness &Personal care,wellness-andpersonal-care,8,999
+40,Wine & Bar,wine-and-bar,8,999
+41,Wine accessories,wine-accessories,8,999
+42,Bike accessories,bike-accessories,9,999
+43,Car accessories,car-accessories,9,999
+44,First Aid & Home Safety,first-aid-and-home-safety,9,999
+45,Keychains,keychains,9,999
+46,Light,light,9,999
+47,Measuring tapes,measuring-tapes,9,999
+48,Multitools,multitools,9,999
+49,Pocket knives,pocket-knives,9,999
+50,Rulers & Cutters,rulers-and-cutters,9,999
+51,Safety vests,safety-vests,9,999
+52,Table Lamps,table-lamps,9,999
+53,Tool gifts,tool-gifts,9,999
+54,Tool pens,tool-pens,9,999
+55,Tool sets,tool-sets,9,999
+56,Torches,torches,9,999
+57,Work light,work-light,9,999
+58,Powerbanks,powerbanks,5,1
+59,Chargers,chargers,5,2
+60,Cables,cables,5,3
+61,Wearables,wearables,5,4
+62,Speakers,speakers,5,5
+63,Headphones,headphones,5,6
+64,Earbuds,earbuds,5,7
+65,Travel adapters,travel-adapters,5,9
+66,Accessories,accessories,5,11
+67,Accesorries,accesorries,5,999
+68,Ear Buds,ear-buds,5,999
+69,Sport accessories,sport-accessories,7,999
+70,T-Shirts,t-shirts,2,1
+71,Polo,polo,2,2
+72,Sweatshirts,sweatshirts,2,3
+73,Fleeces,fleeces,2,4
+74,Bodywarmers,bodywarmers,2,5
+75,Caps,caps,2,7
+76,Beanies,beanies,2,8
+77,Hats,hats,2,9
+78,Scarves,scarves,2,10
+79,Mens Jackets,mens-jackets,2,999
+80,Unisex Pants,unisex-pants,2,999
+81,Womens Jackets,womens-jackets,2,999
+82,Portfolios,portfolios,1,1
+83,Notebooks,notebooks,1,2
+84,Writing,writing,1,3
+85,Pen Sets,pen-sets,1,999
